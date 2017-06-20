@@ -6,7 +6,7 @@ module.exports = function(app)
 
     var connectionString = 'mongodb://127.0.0.1:27017/test'; //local
 
-    if(process.env.MONGODB_USERNAME) {
+    if(process.env.DB_USERNAME) {
         var username = process.env.DB_USERNAME;
         var password = process.env.DB_PASSWORD;
         connectionString = 'mongodb://' + username + ':' + password;
