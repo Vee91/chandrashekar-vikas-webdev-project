@@ -5,7 +5,6 @@ define(['app', 'homeService'], function (app) {
 
             vm.searchMatchUp = searchMatchUp;
 
-
             function init() {
                 HomeService.findAllChampions()
                     .then(function (response) {

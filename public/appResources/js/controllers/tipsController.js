@@ -7,6 +7,7 @@ define(['app', 'tipsService'], function (app) {
 
 
             function init() {
+                
                 TipsService.searchMatchup(vm.champ1, vm.champ2)
                     .then(function (found) {
                         if(found.length == 0){

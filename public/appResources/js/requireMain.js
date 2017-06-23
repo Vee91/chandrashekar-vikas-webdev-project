@@ -11,8 +11,10 @@ require.config({
         'app': '/appResources/js/app',
         'homeController': '/appResources/js/controllers/homeController',
         'tipsController':'/appResources/js/controllers/tipsController',
+        'registerController': '/appResources/js/controllers/registerController',
         'homeService': '/appResources/js/service/home.service.client',
         'tipsService': '/appResources/js/service/tips.service.client',
+        'registerService': '/appResources/js/service/register.service.client'
     },
     // shim: makes external libraries reachable
     shim: {

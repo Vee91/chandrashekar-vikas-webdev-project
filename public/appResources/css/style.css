@@ -90,3 +90,54 @@ a:hover, a:active {
 .search-center {
     margin: auto;
 }
+
+.register-button {
+    background-image: linear-gradient(rgb(122, 109, 72) 0px, rgb(244, 220, 162) 60%, rgb(90, 83, 58) 100%);
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-bottom: 1px;
+    padding-left: 1px;
+    border-radius: 4px;
+    color: #fdecce;
+    line-height: 2.5;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    width: 100%;
+    cursor: pointer;
+    display: inline-block;
+    border: none;
+}
+
+.register-button-content {
+    display: block;
+    background-image: linear-gradient(rgba(161, 34, 0, 0) 0px, rgb(161, 34, 0) 100%);
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: #ea7a00;
+    border-radius: 3px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+}

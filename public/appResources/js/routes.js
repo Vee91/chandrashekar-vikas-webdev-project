@@ -13,6 +13,12 @@ define([], function () {
                 dependencies: ['tipsController'],
                 cntrl: 'tipsCntrl',
                 cntrlAs: 'model'
+            },
+            "/register": {
+                templateUrl: 'pages/register.html',
+                dependencies: ['registerController'],
+                cntrl: 'registerCntrl',
+                cntrlAs: 'model'
             }
         }
     };
