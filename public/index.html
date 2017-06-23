@@ -2,29 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Web Dev Course Home Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="cache-control" content="no-store">
+    <meta http-equiv="cache-control" content="must-revalidate">
+    <meta http-equiv="Cache-Control"
+          content="no-cache, no-store, must-revalidate"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <META HTTP-EQUIV="Expires" CONTENT="0">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+
+    <link href="extResources/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="appResources/css/style.css" rel="stylesheet"/>
+    <link href="extResources/css/textAngular.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="extResources/css/font-awesome.css">
+
+   <base href="/">
+    <title>League Tips</title>
 </head>
-<body>
-    <h1>Web Dev Course Home Page</h1>
+<body class="body-main">
+<div data-ng-include data-src="'header.html'"></div>
+<div data-ng-view class="container-fluid"></div>
+<div data-ng-include data-src="'footer.html'"></div>
 
-    <p>
-        Customize this home page to your linking.
-    </p>
-
-    <h2>Required links</h2>
-    <ul>
-        <li>
-            <a href="project/index.html">Project</a>
-        </li>
-        <li>
-            <a href="assignment/index.html">Assignment</a>
-        </li>
-        <li>
-            <a href="test/index.html">Test MongoDB</a>
-        </li>
-        <li>
-            <a href="https://github.com/jannunzi/web-dev-template">Your public repository at GitHub.com</a>
-        </li>
-    </ul>
+<script data-main="appResources/js/requireMain.js"
+        src="extResources/js/require-2.1.18.js"></script>
 </body>
 </html>

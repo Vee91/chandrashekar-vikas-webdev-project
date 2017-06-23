@@ -1,0 +1,92 @@
+body {
+    padding-top: 70px;
+    padding-bottom: 55px;
+}
+
+.body-main {
+    background-color: #F5F5F5;
+}
+
+.searchbar {
+    margin-top: 40px;
+}
+
+.header-back {
+    background-color: #0f0f0f;
+}
+
+.header-link {
+    color: #c9aa71;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 16px;
+    margin-right: 15px;
+    margin-bottom: 16px;
+    margin-left: 15px;
+    text-transform: uppercase;
+    transition-property: color;
+    transition-duration: 1s;
+    transition-timing-function: cubic-bezier(0.06, 0.81, 0, 0.98);
+    transition-delay: initial;
+    vertical-align: middle;
+}
+
+a:hover, a:active {
+    color: white;
+    text-decoration: none;
+}
+
+.leaguetips-logo {
+    background: url(https://cdn.leagueoflegends.com/riotbar/prod/1.6.66/images/navigation/icon-game-lol.png?1497291339) no-repeat 5px 8px;
+    display: inline-block;
+    height: 50px;
+    padding-left: 50px;
+}
+
+.leaguetips-header {
+    margin: auto;
+    background: url(http://na.leagueoflegends.com/profiles/lol2_profile/themes/custom/lolt/img/lol_logo.png);
+    background-size: contain;
+    width: 225px;
+    height: 82px;
+    z-index: 10;
+    display: block;
+    text-decoration: none;
+    outline: none;
+    margin-top: 30px;
+}
+
+.searchbar-vs {
+    text-align: center;
+}
+
+.search-button {
+    background-image: url(https://cdn.leagueoflegends.com/riotbar/prod/1.6.67/images/account/sprites-s2a5147f733.png);
+    background-position-x: 0px;
+    background-position-y: -293px;
+    background-size: initial;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+    color: #b2d9db;
+    float: inherit;
+    height: 41px;
+    line-height: 28px;
+    margin: auto;
+    padding: 6px 0 0 0;
+    position: relative;
+    text-align: center;
+    width: 129px;
+    z-index: 0;
+}
+
+.search-color {
+    color: white;
+}
+
+.search-center {
+    margin: auto;
+}
