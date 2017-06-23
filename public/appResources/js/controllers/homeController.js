@@ -6,7 +6,7 @@ define(['app', 'homeService'], function (app) {
             vm.searchMatchUp = searchMatchUp;
 
             function init() {
-                HomeService.findAllChampions()
+                /*HomeService.findAllChampions()
                     .then(function (response) {
                         var champs = response;
                         var keys = [],
@@ -27,7 +27,7 @@ define(['app', 'homeService'], function (app) {
                         }
 
                         vm.champions = result;
-                    })
+                    });*/
             }
 
             init();
