@@ -14,6 +14,12 @@ define([], function () {
                 cntrl: 'tipsCntrl',
                 cntrlAs: 'model'
             },
+            "/login": {
+                templateUrl: 'pages/login.html',
+                dependencies: ['loginController'],
+                cntrl: 'loginCntrl',
+                cntrlAs: 'model'
+            },
             "/register": {
                 templateUrl: 'pages/register.html',
                 dependencies: ['registerController'],

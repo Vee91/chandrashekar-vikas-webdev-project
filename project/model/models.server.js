@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 var connectionString = 'mongodb://localhost/riotgames';
 
-if(process.env.DB_USERNAME) {
+if (process.env.DB_USERNAME) {
     var username = process.env.DB_USERNAME;
     var password = process.env.DB_PASSWORD;
     connectionString = 'mongodb://' + username + ':' + password;
@@ -9,8 +9,10 @@ if(process.env.DB_USERNAME) {
 }
 
 mongoose.connect(connectionString);
+var userModel = require("./user/user.model.server")();
 var tipsModel = require("./matchtips/tips.model.server")();
 var model = {
+    userModel: userModel,
     tipsModel: tipsModel
 };
 

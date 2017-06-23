@@ -12,6 +12,7 @@ require.config({
         'homeController': '/appResources/js/controllers/homeController',
         'tipsController':'/appResources/js/controllers/tipsController',
         'registerController': '/appResources/js/controllers/registerController',
+        'loginController': '/appResources/js/controllers/loginController',
         'homeService': '/appResources/js/service/home.service.client',
         'tipsService': '/appResources/js/service/tips.service.client',
         'registerService': '/appResources/js/service/register.service.client'

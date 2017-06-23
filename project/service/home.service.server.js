@@ -23,11 +23,9 @@ module.exports = function (model) {
         var champ2 = req.params.c2;
         tipsModel.searchMatchup(champ1, champ2)
             .then(function (response) {
-                    console.log('Correct');
                     res.send(response);
                 },
                 function (err) {
-                    console.log('Here');
                     res.sendStatus(404).send(err);
                 });
     }

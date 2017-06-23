@@ -4,8 +4,20 @@ module.exports = function (model) {
     var https = require('https');
     var http = require('http');
     var url = require('url');
+    var bcrypt = require("bcrypt-nodejs");
+    var passport = require('passport');
+    var LocalStrategy = require('passport-local').Strategy;
+    passport.use(new LocalStrategy(localStrategy));
+    
+    function localStrategy() {
+        
+    }
+
+    userModel = model.userModel;
 
     app.get('/api/summoner/:sName', findSummonerByName);
+    app.post('/api/register', register);
+    app.post('/api/login', login);
 
     function findSummonerByName(req, res) {
         var summonerName = req.params.sName;
@@ -42,6 +54,25 @@ module.exports = function (model) {
             });
         });
         return deferred.promise;
+    }
+
+    function register(req, res) {
+        var user = req.body;
+        user.password = bcrypt.hashSync(user.password);
+        userModel
+            .createUser(user).then(
+            function (user) {
+                if (user) {
+                    res.json(user);
+                }
+            }, function (err) {
+            }
+        );
+    }
+
+    function login(req, res) {
+        var user = req.body;
+        console.log(user);
     }
 
 }
