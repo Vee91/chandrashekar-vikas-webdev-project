@@ -3,7 +3,8 @@ define(['app'], function (app) {
         var factory = {
             findSummonerByName: findSummonerByName,
             createUser: createUser,
-            login: login
+            login: login,
+            loggedIn: loggedIn
         };
 
         function findSummonerByName(sName) {
@@ -25,6 +26,16 @@ define(['app'], function (app) {
             var url = "/api/login";
             return $http.post(url, user)
                 .then(function (response) {
+                    console.log(response);
+                    return response.data;
+                }, function (err) {
+                    console.log(err);
+                });
+        }
+
+        function loggedIn() {
+            return $http.post("/api/loggedin").then(
+                function (response) {
                     return response.data;
                 });
         }

@@ -4,11 +4,23 @@ module.exports = function () {
     var userModel = mongoose.model("UserModel", userSchema);
 
     var factory = {
-        createUser: createUser
+        createUser: createUser,
+        findUserByName: findUserByName,
+        findUserById: findUserById
     };
     return factory;
 
     function createUser(user) {
         return userModel.create(user);
+    }
+
+    function findUserByName(username) {
+        return userModel.findOne({
+            username: username
+        });
+    }
+
+    function findUserById(userid) {
+        return userModel.findById(userid);
     }
 }

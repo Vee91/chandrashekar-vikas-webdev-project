@@ -8,16 +8,36 @@ module.exports = function (model) {
     var passport = require('passport');
     var LocalStrategy = require('passport-local').Strategy;
     passport.use(new LocalStrategy(localStrategy));
-    
-    function localStrategy() {
-        
-    }
+    passport.serializeUser(serializeUser);
+    passport.deserializeUser(deserializeUser);
 
     userModel = model.userModel;
 
+    app.post('/api/login', passport.authenticate('local'), login);
+    app.post('/api/loggedin', loggedin);
+
+    function localStrategy(username, password, done) {
+        userModel.findUserByName(username)
+            .then(function (user) {
+                    if (!user) {
+                        return done(null, false);
+                    }
+                    else if(bcrypt.compareSync(password, user.password)){
+                        return done(null, user);
+                    }
+                    return done(null, false);
+                },
+                function (err) {
+                    if (err) {
+                        return done(err);
+                    }
+                });
+    }
+
+
     app.get('/api/summoner/:sName', findSummonerByName);
     app.post('/api/register', register);
-    app.post('/api/login', login);
+
 
     function findSummonerByName(req, res) {
         var summonerName = req.params.sName;
@@ -71,8 +91,25 @@ module.exports = function (model) {
     }
 
     function login(req, res) {
-        var user = req.body;
-        console.log(user);
+        var user = req.user;
+        res.json(user);
+    }
+
+    function serializeUser(user, done) {
+        done(null, user);
+    }
+
+    function deserializeUser(user, done) {
+        userModel.findUserById(user._id)
+            .then(function (user) {
+                done(null, user);
+            }, function (err) {
+                done(err, null);
+            });
+    };
+
+    function loggedin(req, res) {
+        res.send(req.isAuthenticated() ? req.user : '0');
     }
 
 }

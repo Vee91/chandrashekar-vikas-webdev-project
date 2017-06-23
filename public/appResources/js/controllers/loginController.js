@@ -8,7 +8,7 @@ define(['app', 'registerService'], function (app) {
             function login(user) {
                 RegisterService.login(user)
                     .then(function (found) {
-
+                        $location.url('/ph/profile');
                     });
             }
 

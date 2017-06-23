@@ -14,17 +14,24 @@ define([], function () {
                 cntrl: 'tipsCntrl',
                 cntrlAs: 'model'
             },
-            "/login": {
+            "/ph/login": {
                 templateUrl: 'pages/login.html',
                 dependencies: ['loginController'],
                 cntrl: 'loginCntrl',
                 cntrlAs: 'model'
             },
-            "/register": {
+            "/ph/register": {
                 templateUrl: 'pages/register.html',
                 dependencies: ['registerController'],
                 cntrl: 'registerCntrl',
                 cntrlAs: 'model'
+            },
+            "/ph/profile": {
+                templateUrl: 'pages/profile.html',
+                dependencies: ['profileController'],
+                cntrl: 'profileCntrl',
+                cntrlAs: 'model',
+                res: 'checklog'
             }
         }
     };

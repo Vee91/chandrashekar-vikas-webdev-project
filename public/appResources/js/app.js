@@ -46,21 +46,21 @@ define(['angular', 'routes', 'angularRoute', 'angularSanitize'],
 
                         return deferred.promise;
                     }],
-                    currentUser: ['$q', '$timeout', '$http', '$location', '$rootScope',
-                        function ($q, $timeout, $http, $location, $rootScope) {
-                            var deferred = $q.defer();
-                            $http.get('/api/loggedin')
-                                .then(function (user) {
-                                    $rootScope.errorMessage = null;
-                                    if (user.data !== '0') {
-                                        deferred.resolve(user.data);
-                                    } else {
-                                        deferred.reject();
-                                        $location.url('/');
-                                    }
-                                });
-                            return deferred.promise;
-                        }]
+                    currentUser: cehckLogin/*['$q', '$timeout', '$http', '$location', '$rootScope',
+                     function ($q, $timeout, $http, $location, $rootScope) {
+                     var deferred = $q.defer();
+                     $http.get('/api/loggedin')
+                     .then(function (user) {
+                     $rootScope.errorMessage = null;
+                     if (user.data !== '0') {
+                     deferred.resolve(user.data);
+                     } else {
+                     deferred.reject();
+                     $location.url('/');
+                     }
+                     });
+                     return deferred.promise;
+                     }]*/
                 }
 
                 return definition;
@@ -111,6 +111,20 @@ define(['angular', 'routes', 'angularRoute', 'angularSanitize'],
 
         }]);
 
+        function cehckLogin($q, $location, RegisterService){
+            var deffered = $q.defer();
+            RegisterService.loggedIn()
+                .then(function (user) {
+                    if(user == '0') {
+                        deffered.reject();
+                        $location.url('/ph/login');
+                    }
+                    else {
+                        deffered.resolve(user);
+                    }
+                });
+            return deffered.promise;
+        }
+
         return app;
-    })
-;
+    });
