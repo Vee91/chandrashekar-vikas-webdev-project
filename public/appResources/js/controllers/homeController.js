@@ -6,7 +6,7 @@ define(['app', 'homeService'], function (app) {
             vm.searchMatchUp = searchMatchUp;
 
             function init() {
-                /*HomeService.findAllChampions()
+                HomeService.findAllChampions()
                     .then(function (response) {
                         var champs = response;
                         var keys = [],
@@ -27,13 +27,13 @@ define(['app', 'homeService'], function (app) {
                         }
 
                         vm.champions = result;
-                    });*/
+                    });
             }
 
             init();
 
             function searchMatchUp(champ1, champ2) {
-                $location.url("/ph/tips/"+champ1.id+"/vs/"+champ2.id);
+                $location.url("/ph/tips/" + champ1.id + "/vs/" + champ2.id);
             }
 
         }]);
