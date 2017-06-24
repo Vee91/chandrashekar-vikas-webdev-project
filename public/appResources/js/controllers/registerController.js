@@ -6,10 +6,7 @@ define(['app', 'registerService'], function (app) {
             vm.register = register;
 
             function register(user) {
-                if (!user.username || user.username == undefined || user.username === "") {
-                    vm.error = "Please enter Username";
-                }
-                else if (!user.summonerName || user.summonerName == undefined || user.summonerName === "") {
+                if (!user.summonerName || user.summonerName == undefined || user.summonerName === "") {
                     vm.error = "Please enter Summoner Name";
                 }
                 else if (user.password == undefined || user.password === "") {
@@ -17,6 +14,9 @@ define(['app', 'registerService'], function (app) {
                 }
                 else if (user.password !== user.confirmpassword) {
                     vm.error = "Please make sure passwords match";
+                }
+                else if (user.role == undefined || user.role === "") {
+                    vm.error = "Please select role";
                 }
                 else {
                     RegisterService.findSummonerByName(user.summonerName)

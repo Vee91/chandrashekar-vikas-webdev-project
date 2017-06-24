@@ -5,7 +5,9 @@ module.exports = function () {
 
     var factory = {
         searchMatchup: searchMatchup,
-        addTip: addTip
+        addTip: addTip,
+        findTipById: findTipById,
+        updateTip: updateTip
     };
     return factory;
 
@@ -19,6 +21,25 @@ module.exports = function () {
     function addTip(tip) {
         return tipsModel.create(tip);
     }
+
+    function updateTip(tipId, tip) {
+        return tipsModel.update(
+            {
+                _id: tipId
+            },
+            {
+                upVotes: tip.upVotes,
+                downVotes: tip.downVotes,
+                voteBy: tip.voteBy,
+
+            }
+        );
+    }
+
+    function findTipById(tipId) {
+        return tipsModel.findById(tipId);
+    }
+
 
 
 }

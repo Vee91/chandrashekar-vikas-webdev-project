@@ -5,12 +5,9 @@
             <a class="leaguetips-logo" href="/"></a>
         </div>
 
-        <div class="col-xs-6">
-
-        </div>
-
-        <div class="col-xs-4">
+        <div class="col-xs-10">
             <a class="header-link pull-right" href="/"> My Tips</a>
+            <span class="header-seperator pull-right"></span>
             <a class="header-link pull-right" href="ph/searchTips"> Search Tips</a>
         </div>
 
@@ -22,17 +19,25 @@
 
     <h2>{{model.champ1details.name}} vs {{model.champ2details.name}}</h2>
 
+
+
     <div class="col-xs-12" ng-show="model.notipsfound">
         Sorry, no notes found for this match up
     </div>
 
     <div class="col-xs-12" ng-show="!model.notipsfound">
+        <div ng-show="model.error" class="alert alert-danger">
+            {{model.error}}
+        </div>
         <div ng-repeat="tip in model.tips">
             <div class="list-group">
                 <div class="list-group-item">
-                    <h4 class="list-group-item-heading">{{tip.tips}} <span class="badge pull-right">{{tip.upVotes - tip.downVotes}}</span></h4>
+                    <h4 class="list-group-item-heading">{{tip.tips}} <span class="badge pull-right">{{tip.upVotes - tip.downVotes}}</span>
+                    </h4>
                     <p class="list-group-item-text"> -by
                         <span>{{tip.tipByName}}</span>
+                        <span class="subtextup" ng-click="model.upVote(tip)">Up Vote</span>
+                        <span class="subtextdown" ng-click="model.downVote(tip)">Down Vote</span>
                     </p>
                 </div>
             </div>
@@ -57,7 +62,7 @@
                         <textarea id="description" ng-model="tip" rows="6" class="form-control"></textarea>
                     </div>
 
-                    <div style="padding-top: 30px;">
+                    <div class="tip-modal-padding">
                         <button class="tip-modal-button"
                                 ng-click="model.createNewTip(tip);">OK
                         </button>

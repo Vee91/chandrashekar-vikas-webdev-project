@@ -5,7 +5,7 @@ module.exports = function () {
 
     var factory = {
         createUser: createUser,
-        findUserByName: findUserByName,
+        findUserBySummonerName: findUserBySummonerName,
         findUserById: findUserById
     };
     return factory;
@@ -14,9 +14,9 @@ module.exports = function () {
         return userModel.create(user);
     }
 
-    function findUserByName(username) {
+    function findUserBySummonerName(summonerName) {
         return userModel.findOne({
-            username: username
+            summonerName: summonerName
         });
     }
 

@@ -10,9 +10,8 @@ module.exports = function () {
         tipByName: String,
         dateCreated: {type: Date, default: Date.now},
         upVotes: Number,
-        upVotesBy: [{type: mongoose.Schema.Types.ObjectId, ref: "userModel"}],
         downVotes: Number,
-        downVotesBy: [{type: mongoose.Schema.Types.ObjectId, ref: "userModel"}],
+        voteBy: [{type: mongoose.Schema.Types.ObjectId, ref: "userModel"}],
     }, {collection: "tips"});
     return TipsSchema;
 };

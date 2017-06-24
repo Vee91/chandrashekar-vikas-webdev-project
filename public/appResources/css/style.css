@@ -7,12 +7,31 @@ body {
     background-color: #F5F5F5;
 }
 
+.obj-main {
+    margin-top: 60px;
+    text-align: center
+}
+
 .searchbar {
     margin-top: 40px;
 }
 
 .header-back {
     background-color: #0f0f0f;
+}
+
+.header-seperator {
+    border-left-width: 2px;
+    border-left-style: solid;
+    border-left-color: rgba(78, 78, 78, 0.92);
+    display: inline-block;
+    font-size: 14px;
+    height: 30px;
+    margin-top: 10px;
+    margin-right: 0.25em;
+    margin-bottom: 10px;
+    margin-left: 0.25em;
+    vertical-align: top
 }
 
 .tip-modal {
@@ -63,6 +82,10 @@ body {
 .tip-modal-button:hover{
     outline: 2px solid #59b7f8;
     color: #ffffff;
+}
+
+.tip-modal-padding {
+    padding-top: 30px;
 }
 
 .header-link {
@@ -190,4 +213,16 @@ a:hover, a:active {
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
     border-bottom-left-radius: 3px;
+}
+
+.subtextup {
+    margin-left: 10px;
+    cursor: pointer;
+    color: #2b542c;
+}
+
+.subtextdown {
+    margin-left: 10px;
+    cursor: pointer;
+    color: #761c19;
 }

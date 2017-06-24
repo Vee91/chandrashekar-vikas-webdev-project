@@ -3,7 +3,8 @@ define(['app'], function (app) {
         var factory = {
             searchMatchup: searchMatchup,
             addTip: addTip,
-            findChampById: findChampById
+            findChampById: findChampById,
+            upVoteTip: upVoteTip
         };
 
         function searchMatchup(champ1, champ2) {
@@ -27,6 +28,16 @@ define(['app'], function (app) {
             return $http.get(url)
                 .then(function (response) {
                     return response.data;
+                });
+        }
+
+        function upVoteTip(tip, userId) {
+            var url = "/api/tip/upvote/" + tip._id;
+            return $http.put(url, tip)
+                .then(function (response) {
+                    return response.data;
+                }, function (err) {
+                    return err;
                 });
         }
 

@@ -17,7 +17,7 @@ module.exports = function (model) {
     app.post('/api/loggedin', loggedin);
 
     function localStrategy(username, password, done) {
-        userModel.findUserByName(username)
+        userModel.findUserBySummonerName(username)
             .then(function (user) {
                     if (!user) {
                         return done(null, false);
