@@ -26,10 +26,9 @@ define(['app'], function (app) {
             var url = "/api/login";
             return $http.post(url, user)
                 .then(function (response) {
-                    console.log(response);
                     return response.data;
                 }, function (err) {
-                    console.log(err);
+                    return err.data;
                 });
         }
 

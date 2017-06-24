@@ -25,10 +25,9 @@ define(['app', 'registerService'], function (app) {
                                 vm.error = "Summoner name not found. Please try again";
                             }
                             else {
-                                console.log(found);
-                                /*RegisterService.createUser(user)
+                                RegisterService.createUser(user)
                                     .then(function (response) {
-                                    });*/
+                                    });
                             }
                         });
                 }

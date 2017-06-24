@@ -32,7 +32,21 @@ define([], function () {
                 cntrl: 'profileCntrl',
                 cntrlAs: 'model',
                 res: 'checklog'
-            }
+            },
+            "/ph/searchTips": {
+                templateUrl: 'pages/searchtips.html',
+                dependencies: ['searchController'],
+                cntrl: 'searchCntrl',
+                cntrlAs: 'model',
+                res: 'checklog'
+            },
+            "/ph/searchtips/:c1/vs/:c2": {
+                templateUrl: 'pages/tipsresult.html',
+                dependencies: ['tipsController'],
+                cntrl: 'tipsCntrl',
+                cntrlAs: 'model',
+                res: 'checklog'
+            },
         }
     };
     return routesConfig;

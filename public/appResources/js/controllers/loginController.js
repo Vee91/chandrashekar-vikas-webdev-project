@@ -8,7 +8,12 @@ define(['app', 'registerService'], function (app) {
             function login(user) {
                 RegisterService.login(user)
                     .then(function (found) {
-                        $location.url('/ph/profile');
+                        if (found === 'Unauthorized') {
+                            vm.error = "Username and password combination not recognised. Please try again";
+                        }
+                        else {
+                            $location.url('/ph/profile');
+                        }
                     });
             }
 

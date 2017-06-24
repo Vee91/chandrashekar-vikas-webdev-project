@@ -15,6 +15,52 @@ body {
     background-color: #0f0f0f;
 }
 
+.tip-modal {
+    overflow: visible;
+}
+
+
+.tip-modal-dialog {
+    padding-top: 130px;
+    padding-left: 0px;
+    padding-right: 0px;
+    width: auto;
+    padding-bottom: 119px;
+}
+
+.tip-modal-body {
+    min-height:212px;
+    background-color: #f7f7f7;
+
+}
+
+.success-modal-body {
+    min-height:212px;
+    background-color: #fff;
+
+}
+
+.success-modal-text {
+    font-family: Segoe UI;
+    color: #333;
+    font-size: 14px;
+}
+
+.tip-modal-button {
+    width: 90px;
+    height: 32px;
+    border:none;
+    text-align: center;
+    background-color: #2084c9;
+    color: #ffffff;
+    font-size: 14px;
+    border-radius:0px;
+}
+.tip-modal-button:hover{
+    outline: 2px solid #59b7f8;
+    color: #ffffff;
+}
+
 .header-link {
     color: #c9aa71;
     cursor: pointer;
