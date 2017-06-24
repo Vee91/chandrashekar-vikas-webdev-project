@@ -14,6 +14,7 @@ require.config({
         'routes': '/appResources/js/routes',
         'app': '/appResources/js/app',
         'homeController': '/appResources/js/controllers/homeController',
+        'annonTipsController': '/appResources/js/controllers/annonTipsController',
         'tipsController': '/appResources/js/controllers/tipsController',
         'registerController': '/appResources/js/controllers/registerController',
         'loginController': '/appResources/js/controllers/loginController',

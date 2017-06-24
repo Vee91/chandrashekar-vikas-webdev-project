@@ -7,8 +7,20 @@ define(['angular', 'app', 'jqueryui', 'bootstrap', 'tipsService'], function (ang
 
             vm.addNewTip = addNewTip;
             vm.createNewTip = createNewTip;
+            vm.hideModal = hideModal;
+
+
+
 
             function init() {
+                TipsService.findChampById(vm.champ1)
+                    .then(function (response) {
+                        vm.champ1details = response;
+                    });
+                TipsService.findChampById(vm.champ2)
+                    .then(function (response) {
+                        vm.champ2details = response;
+                    });
                 TipsService.searchMatchup(vm.champ1, vm.champ2)
                     .then(function (found) {
                         if (found.length == 0) {
@@ -16,6 +28,7 @@ define(['angular', 'app', 'jqueryui', 'bootstrap', 'tipsService'], function (ang
                         }
                         else {
                             vm.notipsfound = false;
+                            vm.tips = found;
                         }
                     });
             }
@@ -26,8 +39,32 @@ define(['angular', 'app', 'jqueryui', 'bootstrap', 'tipsService'], function (ang
                 $("#addtipsmodal").modal('show');
             }
 
-            function createNewTip() {
-                console.log(vm.tip);
+            function createNewTip(tip) {
+                var newTip = {
+                    champ1: champ1details.name,
+                    champ1Id: champ1details.id,
+                    champ2: champ2details.name,
+                    champ2Id: champ2details.id,
+                    tips: tip,
+                    tipBy: currentUser._id,
+                    tipByName: currentUser.summonerName,
+                    upVotes: 0,
+                    downVotes: 0,
+                };
+                TipsService.addTip(newTip).then(function (found) {
+                    if (found.length == 0) {
+                        vm.notipsfound = true;
+                    }
+                    else {
+                        vm.notipsfound = false;
+                        vm.tips = found;
+                    }
+                    $("#addtipsmodal").modal('hide');
+                });
+
+            }
+
+            function hideModal() {
                 $("#addtipsmodal").modal('hide');
             }
 

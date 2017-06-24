@@ -17,6 +17,8 @@ body {
 
 .tip-modal {
     overflow: visible;
+    max-width:1366px;
+    margin:auto;
 }
 
 
@@ -35,6 +37,8 @@ body {
 }
 
 .success-modal-body {
+    padding:30px;
+    text-align: left;
     min-height:212px;
     background-color: #fff;
 

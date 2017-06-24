@@ -7,6 +7,7 @@ module.exports = function () {
         champ2Id: Number,
         tips: String,
         tipBy: {type: mongoose.Schema.Types.ObjectId, ref: "userModel"},
+        tipByName: String,
         dateCreated: {type: Date, default: Date.now},
         upVotes: Number,
         upVotesBy: [{type: mongoose.Schema.Types.ObjectId, ref: "userModel"}],

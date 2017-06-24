@@ -4,15 +4,20 @@ module.exports = function () {
     var tipsModel = mongoose.model("TipsModel", tipsSchema);
 
     var factory = {
-        searchMatchup: searchMatchup
+        searchMatchup: searchMatchup,
+        addTip: addTip
     };
     return factory;
 
     function searchMatchup(champ1, champ2) {
         return tipsModel.find({
-            champ1: champ1,
-            champ2: champ2
+            champ1Id: champ1,
+            champ2Id: champ2
         });
+    }
+
+    function addTip(tip) {
+        return tipsModel.create(tip);
     }
 
 
