@@ -10,6 +10,7 @@ define(['angular', 'app', 'jqueryui', 'bootstrap', 'tipsService'], function (ang
             vm.hideModal = hideModal;
             vm.upVote = upVote;
             vm.downVote = downVote;
+            vm.getUserTips = getUserTips;
 
             function init() {
                 TipsService.findChampById(vm.champ1)
@@ -93,7 +94,26 @@ define(['angular', 'app', 'jqueryui', 'bootstrap', 'tipsService'], function (ang
             }
 
             function downVote(tip) {
-                console.log(tip);
+                vm.error = false;
+                if (containsObject(currentUser._id, tip.voteBy)) {
+                    vm.error = "You have already voted on this tip";
+                }
+                else {
+                    TipsService.downVoteTip(tip, currentUser._id)
+                        .then(function (found) {
+                            if(found.status){
+                                if(found.status == 400){
+                                    vm.error = "You have already voted on this tip";
+                                }
+                                else {
+                                    vm.error = "Something went wrong please try again later";
+                                }
+                            }
+                            else {
+                                vm.tips = found;
+                            }
+                        });
+                }
             }
 
             function containsObject(obj, list) {
@@ -105,6 +125,10 @@ define(['angular', 'app', 'jqueryui', 'bootstrap', 'tipsService'], function (ang
                 }
 
                 return false;
+            }
+
+            function getUserTips(userID) {
+                $location.url("/ph/userTips/"+userID);
             }
 
         }]);

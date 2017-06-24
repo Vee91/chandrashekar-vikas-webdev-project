@@ -226,3 +226,8 @@ a:hover, a:active {
     cursor: pointer;
     color: #761c19;
 }
+
+.subtextuser {
+    cursor: pointer;
+    color: #2b669a;
+}

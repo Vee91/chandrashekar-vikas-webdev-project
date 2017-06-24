@@ -7,7 +7,8 @@ module.exports = function () {
         searchMatchup: searchMatchup,
         addTip: addTip,
         findTipById: findTipById,
-        updateTip: updateTip
+        updateTip: updateTip,
+        findAllTipsForUser: findAllTipsForUser
     };
     return factory;
 
@@ -40,6 +41,10 @@ module.exports = function () {
         return tipsModel.findById(tipId);
     }
 
-
+    function findAllTipsForUser(userId) {
+        return tipsModel.find({
+            tipBy: userId
+        });
+    }
 
 }

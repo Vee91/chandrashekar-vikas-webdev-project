@@ -47,6 +47,20 @@ define([], function () {
                 cntrlAs: 'model',
                 res: 'checklog'
             },
+            "/ph/myTips": {
+                templateUrl: 'pages/myTips.html',
+                dependencies: ['myTipsController'],
+                cntrl: 'myTipsCntrl',
+                cntrlAs: 'model',
+                res: 'checklog'
+            },
+            "/ph/userTips/:userID": {
+                templateUrl: 'pages/userTips.html',
+                dependencies: ['userTipsController'],
+                cntrl: 'userTipsCntrl',
+                cntrlAs: 'model',
+                res: 'checklog'
+            },
         }
     };
     return routesConfig;

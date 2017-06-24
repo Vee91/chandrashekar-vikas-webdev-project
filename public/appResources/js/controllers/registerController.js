@@ -27,6 +27,7 @@ define(['app', 'registerService'], function (app) {
                             else {
                                 RegisterService.createUser(user)
                                     .then(function (response) {
+                                        $location.url('/ph/profile');
                                     });
                             }
                         });

@@ -1,0 +1,40 @@
+<nav class="navbar navbar-default navbar-fixed-top header-back">
+    <div class="container-fluid">
+
+        <div class="col-xs-2">
+            <a class="leaguetips-logo" href="/"></a>
+        </div>
+
+        <div class="col-xs-10">
+            <a class="header-link pull-right" href="ph/myTips"> My Tips</a>
+            <span class="header-seperator pull-right"></span>
+            <a class="header-link pull-right" href="ph/searchTips"> Search Tips</a>
+        </div>
+
+    </div>
+</nav>
+
+<div class="container-fluid">
+
+    <div class="col-xs-12" ng-show="model.notipsfound">
+        You have not added any notes yet.
+    </div>
+
+    <div class="col-xs-12" ng-show="!model.notipsfound">
+        <div ng-show="model.error" class="alert alert-danger">
+            {{model.error}}
+        </div>
+        <div ng-repeat="tip in model.tips">
+            <div class="list-group">
+                <div class="list-group-item">
+                    <h4 class="list-group-item-heading">{{tip.champ1}} vs {{tip.champ2}} <span class="badge pull-right">{{tip.upVotes - tip.downVotes}}</span>
+                    </h4>
+                    <p class="list-group-item-text"> {{tip.tips}}</span>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

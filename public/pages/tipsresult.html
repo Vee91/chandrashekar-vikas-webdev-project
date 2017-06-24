@@ -6,7 +6,7 @@
         </div>
 
         <div class="col-xs-10">
-            <a class="header-link pull-right" href="/"> My Tips</a>
+            <a class="header-link pull-right" href="ph/myTips"> My Tips</a>
             <span class="header-seperator pull-right"></span>
             <a class="header-link pull-right" href="ph/searchTips"> Search Tips</a>
         </div>
@@ -35,7 +35,7 @@
                     <h4 class="list-group-item-heading">{{tip.tips}} <span class="badge pull-right">{{tip.upVotes - tip.downVotes}}</span>
                     </h4>
                     <p class="list-group-item-text"> -by
-                        <span>{{tip.tipByName}}</span>
+                        <span class="subtextuser" ng-click="model.getUserTips(tip.tipBy);">{{tip.tipByName}}</span>
                         <span class="subtextup" ng-click="model.upVote(tip)">Up Vote</span>
                         <span class="subtextdown" ng-click="model.downVote(tip)">Down Vote</span>
                     </p>

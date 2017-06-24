@@ -8,9 +8,12 @@ module.exports = function (model) {
 
     tipsModel = model.tipsModel;
 
+    app.get('/api/tip', findAllTipsForUser);
+    app.get('/api/tip/user/:uid', findAllTipsForUserId);
     app.post('/api/tip', addTip);
     app.get('/api/matchups/:c1/:c2', searchMatchUp);
     app.put('/api/tip/upvote/:tipId', upVoteTip);
+    app.put('/api/tip/downvote/:tipId', downVoteTip);
 
     function addTip(req, res) {
         var tip = req.body;
@@ -30,7 +33,6 @@ module.exports = function (model) {
         var tip = req.body;
         tipsModel.searchMatchup(tip.champ1Id, tip.champ2Id)
             .then(function (response) {
-                    console.log(response);
                     res.send(response);
                 },
                 function (err) {
@@ -74,6 +76,30 @@ module.exports = function (model) {
             });
     }
 
+    function downVoteTip(req, res) {
+        var user = req.user;
+        var tipId = req.params.tipId;
+        tipsModel.findTipById(tipId)
+            .then(function (result) {
+                if (containsObject(user._id, result.voteBy)) {
+                    res.sendStatus(400);
+                }
+                else {
+                    result.downVotes = result.downVotes + 1;
+                    var v = result.voteBy;
+                    v.push(user._id);
+                    result.voteBy = v;
+                    tipsModel.updateTip(tipId, result)
+                        .then(function (success) {
+                                findAllTipsForMatchup(req, res);
+                            },
+                            function (err) {
+                                res.sendStatus(500).send(err);
+                            });
+                }
+            });
+    }
+
     function containsObject(obj, list) {
         var i;
         for (i = 0; i < list.length; i++) {
@@ -82,5 +108,29 @@ module.exports = function (model) {
             }
         }
         return false;
+    }
+
+    function findAllTipsForUser(req, res) {
+        var user = req.user;
+        tipsModel.findAllTipsForUser(user._id)
+            .then(function (response) {
+                    res.send(response);
+                },
+                function (err) {
+                    res.sendStatus(404).send(err);
+                });
+    }
+
+    function findAllTipsForUserId(req, res) {
+        var userId = req.params.uid;
+        tipsModel.findAllTipsForUser(userId)
+            .then(function (response) {
+                    res.send(response);
+                },
+                function (err) {
+                    res.sendStatus(404).send(err);
+                });
+
+
     }
 }

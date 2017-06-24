@@ -22,7 +22,7 @@ module.exports = function (model) {
                     if (!user) {
                         return done(null, false);
                     }
-                    else if(bcrypt.compareSync(password, user.password)){
+                    else if (bcrypt.compareSync(password, user.password)) {
                         return done(null, user);
                     }
                     return done(null, false);
@@ -79,15 +79,18 @@ module.exports = function (model) {
     function register(req, res) {
         var user = req.body;
         user.password = bcrypt.hashSync(user.password);
-        userModel
-            .createUser(user).then(
-            function (user) {
-                if (user) {
-                    res.json(user);
-                }
+        userModel.createUser(user)
+            .then(function (user) {
+                req.login(user, function (err) {
+                    if (err) {
+                        res.send(400)
+                    } else {
+                        res.json(user);
+                    }
+                });
             }, function (err) {
-            }
-        );
+                res.sendStatus(400).send(err);
+            });
     }
 
     function login(req, res) {

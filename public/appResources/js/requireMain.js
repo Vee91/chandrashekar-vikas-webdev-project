@@ -16,6 +16,8 @@ require.config({
         'homeController': '/appResources/js/controllers/homeController',
         'annonTipsController': '/appResources/js/controllers/annonTipsController',
         'tipsController': '/appResources/js/controllers/tipsController',
+        'myTipsController': '/appResources/js/controllers/myTipsController',
+        'userTipsController': '/appResources/js/controllers/userTipsController',
         'registerController': '/appResources/js/controllers/registerController',
         'loginController': '/appResources/js/controllers/loginController',
         'profileController': '/appResources/js/controllers/profileController',
