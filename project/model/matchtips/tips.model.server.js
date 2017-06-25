@@ -8,7 +8,9 @@ module.exports = function () {
         addTip: addTip,
         findTipById: findTipById,
         updateTip: updateTip,
-        findAllTipsForUser: findAllTipsForUser
+        findAllTipsForUser: findAllTipsForUser,
+        deleteTip: deleteTip,
+        updateTipContent: updateTipContent
     };
     return factory;
 
@@ -45,6 +47,18 @@ module.exports = function () {
         return tipsModel.find({
             tipBy: userId
         });
+    }
+
+    function deleteTip(tipId) {
+        return tipsModel.remove({
+            _id: tipId
+        });
+    }
+
+    function updateTipContent(tipId, tipContent) {
+        return tipsModel.update(
+            {_id: tipId},
+            {tips: tipContent,});
     }
 
 }

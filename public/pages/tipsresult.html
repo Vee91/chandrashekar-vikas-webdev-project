@@ -17,8 +17,27 @@
 
 <div class="container-fluid">
 
-    <h2>{{model.champ1details.name}} vs {{model.champ2details.name}}</h2>
-
+    <div class="row">
+        <div class="col-xs-3 col-xs-offset-2">
+            <div>
+                <img src="http://ddragon.leagueoflegends.com/cdn/7.5.2/img/champion/{{model.champ1details.image.full}}"
+                     class="img-responsive center-block"
+                     alt="Champ1">
+                <h3 class="text-center">{{model.champ1details.name}}</h3>
+            </div>
+        </div>
+        <div class="col-xs-2">
+            <h3 class="text-center">VS</h3>
+        </div>
+        <div class="col-xs-3">
+            <div>
+                <img src="http://ddragon.leagueoflegends.com/cdn/7.5.2/img/champion/{{model.champ2details.image.full}}"
+                     class="img-responsive center-block"
+                     alt="Champ2">
+                <h3 class="text-center">{{model.champ2details.name}}</h3>
+            </div>
+        </div>
+    </div>
 
 
     <div class="col-xs-12" ng-show="model.notipsfound">

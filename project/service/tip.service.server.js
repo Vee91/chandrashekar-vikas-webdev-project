@@ -14,6 +14,8 @@ module.exports = function (model) {
     app.get('/api/matchups/:c1/:c2', searchMatchUp);
     app.put('/api/tip/upvote/:tipId', upVoteTip);
     app.put('/api/tip/downvote/:tipId', downVoteTip);
+    app.delete('/api/tip/:tipId', deleteTip);
+    app.put('/api/tip/:tipId', updateTipContent);
 
     function addTip(req, res) {
         var tip = req.body;
@@ -132,5 +134,30 @@ module.exports = function (model) {
                 });
 
 
+    }
+
+    function deleteTip(req, res) {
+        var tipId = req.params.tipId;
+        tipsModel.deleteTip(tipId)
+            .then(function (status) {
+                    findAllTipsForUser(req, res);
+                },
+                function (err) {
+                    res.sendStatus(500).send(err);
+                }
+            )
+    }
+
+    function updateTipContent(req, res) {
+        var tipContent = req.body;
+        var tipId = req.params.tipId;
+        tipsModel.updateTipContent(tipId, tipContent.tip)
+            .then(function (success) {
+                    findAllTipsForUser(req, res);
+                },
+                function (err) {
+                    res.sendStatus(500).send(err);
+                }
+            )
     }
 }
