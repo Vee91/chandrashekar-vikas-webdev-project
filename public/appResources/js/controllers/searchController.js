@@ -27,13 +27,15 @@ define(['app', 'homeService'], function (app) {
                         }
 
                         vm.champions = result;
+                        vm.champ1 = result[0];
+                        vm.champ2 = result[0];
                     });
             }
 
             init();
 
-            function searchMatchUp(champ1, champ2) {
-                $location.url("/ph/searchtips/" + champ1.id + "/vs/" + champ2.id);
+            function searchMatchUp() {
+                $location.url("/ph/searchtips/" + vm.champ1.id + "/vs/" + vm.champ2.id);
             }
 
         }]);

@@ -10,7 +10,8 @@ module.exports = function () {
         updateTip: updateTip,
         findAllTipsForUser: findAllTipsForUser,
         deleteTip: deleteTip,
-        updateTipContent: updateTipContent
+        updateTipContent: updateTipContent,
+        findAllTips: findAllTips
     };
     return factory;
 
@@ -56,9 +57,25 @@ module.exports = function () {
     }
 
     function updateTipContent(tipId, tipContent) {
-        return tipsModel.update(
-            {_id: tipId},
-            {tips: tipContent,});
+        if (tipContent.champ1) {
+            return tipsModel.update(
+                {_id: tipId},
+                {
+                    tips: tipContent.tip,
+                    champ1: tipContent.champ1,
+                    champ2: tipContent.champ2,
+                    champ1Id: tipContent.champ1Id,
+                    champ2Id: tipContent.champ2Id
+                });
+        }
+        else {
+            return tipsModel.update(
+                {_id: tipId},
+                {tips: tipContent.tip,});
+        }
     }
 
+    function findAllTips() {
+        return tipsModel.find();
+    }
 }

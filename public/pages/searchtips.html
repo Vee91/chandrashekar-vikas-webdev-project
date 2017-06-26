@@ -24,7 +24,7 @@
 <div class=" searchbar">
     <div class="col-xs-4 col-xs-offset-1">
         <select class="form-control" ng-required="true"
-                ng-model="champ1"
+                ng-model="model.champ1"
                 ng-options="champ.name for champ in model.champions">
             <!--<option data-ng-repeat="champ in model.champions">{{champ}}
             </option>-->
@@ -32,7 +32,7 @@
     </div>
     <div class="col-xs-2 searchbar-vs">Vs</div>
     <div class="col-xs-4">
-        <select class="form-control" ng-required="true" data-ng-model="champ2"
+        <select class="form-control" ng-required="true" ng-model="model.champ2"
                 ng-options="champ.name for champ in model.champions">
         </select>
     </div>
@@ -41,7 +41,7 @@
 <div class="container-fluid">
     <div class="col-xs-12">
         <div class="search-center">
-            <div class="search-button" ng-click="model.searchMatchUp(champ1, champ2);">
+            <div class="search-button" ng-click="model.searchMatchUp();">
                 <a class="search-color">Search</a>
             </div>
         </div>

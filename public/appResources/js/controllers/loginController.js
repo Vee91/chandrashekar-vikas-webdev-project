@@ -11,6 +11,9 @@ define(['app', 'registerService'], function (app) {
                         if (found === 'Unauthorized') {
                             vm.error = "Username and password combination not recognised. Please try again";
                         }
+                        else if(found.role === 'ADMIN'){
+                            $location.url('/ph/admin');
+                        }
                         else {
                             $location.url('/ph/profile');
                         }

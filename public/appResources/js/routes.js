@@ -61,6 +61,20 @@ define([], function () {
                 cntrlAs: 'model',
                 res: 'checklog'
             },
+            "/ph/admin": {
+                templateUrl: 'pages/admin.html',
+                dependencies: ['adminController'],
+                cntrl: 'adminCntrl',
+                cntrlAs: 'model',
+                res: 'checklog'
+            },
+            "/ph/manageUsers": {
+                templateUrl: 'pages/manageusers.html',
+                dependencies: ['manageUsersController'],
+                cntrl: 'manageUsersCntrl',
+                cntrlAs: 'model',
+                res: 'checklog'
+            }
         }
     };
     return routesConfig;

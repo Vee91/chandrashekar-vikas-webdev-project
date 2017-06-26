@@ -16,11 +16,20 @@
 
 <div class="container-fluid">
 
+    <div class="col-xs-12">
+        <h3>{{model.username}}'s Tips</h3>
+    </div>
+
+
     <div class="col-xs-12" ng-show="model.notipsfound">
-        You have not added any notes yet.
+        User has not added any notes yet.
     </div>
 
     <div class="col-xs-12" ng-show="!model.notipsfound">
+        <div class="header-links">
+            <p ng-click="model.unsubscribe();" class="pull-right">Unsubscribe</p>
+            <p ng-click="model.subscribe();" class="pull-right seperator">Subscribe</p>
+        </div>
         <div ng-show="model.error" class="alert alert-danger">
             {{model.error}}
         </div>

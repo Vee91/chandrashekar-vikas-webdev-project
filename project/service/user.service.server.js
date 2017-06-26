@@ -37,7 +37,11 @@ module.exports = function (model) {
 
     app.get('/api/summoner/:sName', findSummonerByName);
     app.post('/api/register', register);
-
+    app.get('/api/users/all', findAllUsers);
+    app.delete('/api/user/:userId', deleteUser);
+    app.put('/api/user/:userId', updateUser);
+    app.post('/api/user/subscribe/:userId', subscribeToUser);
+    app.post('/api/user/unsubscribe/:userId', unsubscribeToUser);
 
     function findSummonerByName(req, res) {
         var summonerName = req.params.sName;
@@ -78,19 +82,129 @@ module.exports = function (model) {
 
     function register(req, res) {
         var user = req.body;
+        console.log(user);
         user.password = bcrypt.hashSync(user.password);
         userModel.createUser(user)
             .then(function (user) {
                 req.login(user, function (err) {
                     if (err) {
-                        res.send(400)
+                        res.sendStatus(400)
                     } else {
                         res.json(user);
                     }
                 });
             }, function (err) {
+                console.log(err);
                 res.sendStatus(400).send(err);
             });
+    }
+
+    function findAllUsers(req, res) {
+        var user = req.user;
+        if (!'ADMIN' === user.role) {
+            res.sendStatus(400);
+        }
+        else {
+            userModel.findAllUsers()
+                .then(function (response) {
+                        res.send(response);
+                    },
+                    function (err) {
+                        res.sendStatus(404).send(err);
+                    });
+        }
+    }
+
+    function deleteUser(req, res) {
+        var userId = req.params.userId;
+        var user = req.user;
+        if (user.role === 'ADMIN') {
+            userModel.deleteUser(userId)
+                .then(function (status) {
+                        findAllUsers(req, res);
+                    },
+                    function (err) {
+                        res.sendStatus(500).send(err);
+                    });
+        }
+        else {
+            res.sendStatus(400);
+        }
+    }
+
+    function updateUser(req, res) {
+        var userContent = req.body;
+        var userId = req.params.userId;
+        var user = req.user;
+        if (user.role === 'ADMIN') {
+            userModel.updateUser(userId, userContent)
+                .then(function (success) {
+                        findAllUsers(req, res);
+                    },
+                    function (err) {
+                        res.sendStatus(500).send(err);
+                    });
+        }
+        else {
+            res.sendStatus(400);
+        }
+    }
+
+    function subscribeToUser(req, res) {
+        var userId = req.params.userId;
+        var user = req.user;
+        userModel.findUserById(user._id)
+            .then(function (result) {
+                var following = result.subscribedTo;
+                if (following == undefined) {
+                    following = [userId];
+                    userModel.subscribe(user._id, following)
+                        .then(function (success) {
+                            res.sendStatus(200);
+                        });
+                }
+                else if (containsObject(userId, following)) {
+                    res.sendStatus(400);
+                }
+                else {
+                    following.push(userId);
+                    userModel.subscribe(user._id, following)
+                        .then(function (success) {
+                            res.sendStatus(200);
+                        });
+                }
+            });
+    }
+
+    function unsubscribeToUser(req, res) {
+        var userId = req.params.userId;
+        var user = req.user;
+        userModel.findUserById(user._id)
+            .then(function (result) {
+                var following = result.subscribedTo;
+                if (following == undefined) {
+                    res.sendStatus(400);
+                }
+                else if (!containsObject(userId, following)) {
+                    res.sendStatus(400);
+                }
+                else {
+                    userModel.unsubscribe(user._id, userId)
+                        .then(function (success) {
+                            res.sendStatus(200);
+                        });
+                }
+            });
+    }
+
+    function containsObject(obj, list) {
+        var i;
+        for (i = 0; i < list.length; i++) {
+            if (list[i].equals(obj)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     function login(req, res) {

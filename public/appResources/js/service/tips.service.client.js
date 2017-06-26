@@ -9,7 +9,8 @@ define(['app'], function (app) {
             findAllTipsForUser: findAllTipsForUser,
             findAllTipsForUserId: findAllTipsForUserId,
             deleteTip: deleteTip,
-            updateTip: updateTip
+            updateTip: updateTip,
+            findAllTips: findAllTips
         };
 
         function searchMatchup(champ1, champ2) {
@@ -72,17 +73,29 @@ define(['app'], function (app) {
                 });
         }
 
-        function deleteTip(tipId) {
+        function deleteTip(tipId, tip) {
             var url = "/api/tip/" + tipId;
             return $http.delete(url)
                 .then(function (response) {
                     return response.data;
+                }, function (err) {
+                    return err;
                 });
         }
 
         function updateTip(tipId, tipContent) {
             var url = "/api/tip/" + tipId;
-            return $http.put(url, {tip: tipContent})
+            return $http.put(url, tipContent)
+                .then(function (response) {
+                    return response.data;
+                }, function (err) {
+                    return err;
+                });
+        }
+
+        function findAllTips() {
+            var url = "/api/tip/all";
+            return $http.get(url)
                 .then(function (response) {
                     return response.data;
                 }, function (err) {

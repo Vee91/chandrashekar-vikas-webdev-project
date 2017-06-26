@@ -4,7 +4,12 @@ define(['app', 'registerService'], function (app) {
             var vm = this;
 
             vm.register = register;
+            vm.roles = [
+                {name: 'TRAINEE'},
+                {name: 'COACH'}
+            ];
 
+            vm.role = roles[0];
             function register(user) {
                 if (!user.summonerName || user.summonerName == undefined || user.summonerName === "") {
                     vm.error = "Please enter Summoner Name";
@@ -15,10 +20,12 @@ define(['app', 'registerService'], function (app) {
                 else if (user.password !== user.confirmpassword) {
                     vm.error = "Please make sure passwords match";
                 }
-                else if (user.role == undefined || user.role === "") {
+                else if (vm.role == undefined || vm.role.name === "") {
                     vm.error = "Please select role";
                 }
                 else {
+                    user.role = vm.role.name;
+                    //user.subscribedTo = [];
                     RegisterService.findSummonerByName(user.summonerName)
                         .then(function (found) {
                             if (found.status && found.status.status_code === 404) {

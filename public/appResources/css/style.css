@@ -36,10 +36,9 @@ body {
 
 .tip-modal {
     overflow: visible;
-    max-width:1366px;
-    margin:auto;
+    max-width: 1366px;
+    margin: auto;
 }
-
 
 .tip-modal-dialog {
     padding-top: 130px;
@@ -50,15 +49,15 @@ body {
 }
 
 .tip-modal-body {
-    min-height:212px;
+    min-height: 212px;
     background-color: #f7f7f7;
 
 }
 
 .success-modal-body {
-    padding:30px;
+    padding: 30px;
     text-align: left;
-    min-height:212px;
+    min-height: 212px;
     background-color: #fff;
 
 }
@@ -72,20 +71,25 @@ body {
 .tip-modal-button {
     width: 90px;
     height: 32px;
-    border:none;
+    border: none;
     text-align: center;
     background-color: #2084c9;
     color: #ffffff;
     font-size: 14px;
-    border-radius:0px;
+    border-radius: 0px;
 }
-.tip-modal-button:hover{
+
+.tip-modal-button:hover {
     outline: 2px solid #59b7f8;
     color: #ffffff;
 }
 
 .tip-modal-padding {
     padding-top: 30px;
+}
+
+.modal-border {
+    margin-bottom: 5px;
 }
 
 .header-link {
@@ -230,4 +234,43 @@ a:hover, a:active {
 .subtextuser {
     cursor: pointer;
     color: #2b669a;
+}
+
+.tabsdemoDynamicHeight md-content {
+    background-color: transparent !important;
+}
+
+.tabsdemoDynamicHeight md-content md-tabs {
+    background: #f6f6f6;
+    border: 1px solid #e1e1e1;
+}
+
+.tabsdemoDynamicHeight md-content md-tabs md-tabs-wrapper {
+    background: white;
+}
+
+.tabsdemoDynamicHeight md-content h1:first-child {
+    margin-top: 0;
+}
+
+.header-links {
+    text-decoration-line: none;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+    text-transform: uppercase;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    color: #1b6d85;
+    white-space: nowrap;
+    font-size: 0.66667em;
+    cursor: pointer;
+}
+
+.header-links p {
+    margin-left: 3px;
+}
+
+.seperator:after {
+    content: " | ";
+    display: inline;
 }

@@ -16,6 +16,7 @@ module.exports = function (model) {
     app.put('/api/tip/downvote/:tipId', downVoteTip);
     app.delete('/api/tip/:tipId', deleteTip);
     app.put('/api/tip/:tipId', updateTipContent);
+    app.get('/api/tip/all', findAllTips);
 
     function addTip(req, res) {
         var tip = req.body;
@@ -138,26 +139,68 @@ module.exports = function (model) {
 
     function deleteTip(req, res) {
         var tipId = req.params.tipId;
-        tipsModel.deleteTip(tipId)
-            .then(function (status) {
-                    findAllTipsForUser(req, res);
-                },
-                function (err) {
-                    res.sendStatus(500).send(err);
+        var user = req.user;
+        tipsModel.findTipById(tipId)
+            .then(function (result) {
+                if (user._id.equals(result.tipBy) || user.role === 'ADMIN') {
+                    tipsModel.deleteTip(tipId)
+                        .then(function (status) {
+                                if (user._id.equals(result.tipBy)) {
+                                    findAllTipsForUser(req, res);
+                                }
+                                else if (user.role === 'ADMIN') {
+                                    findAllTips(req, res);
+                                }
+                            },
+                            function (err) {
+                                res.sendStatus(500).send(err);
+                            });
                 }
-            )
+                else {
+                    res.sendStatus(400);
+                }
+            });
     }
 
     function updateTipContent(req, res) {
         var tipContent = req.body;
         var tipId = req.params.tipId;
-        tipsModel.updateTipContent(tipId, tipContent.tip)
-            .then(function (success) {
-                    findAllTipsForUser(req, res);
-                },
-                function (err) {
-                    res.sendStatus(500).send(err);
+        var user = req.user;
+        tipsModel.findTipById(tipId)
+            .then(function (result) {
+                if (user._id.equals(result.tipBy) || user.role === 'ADMIN') {
+                    tipsModel.updateTipContent(tipId, tipContent)
+                        .then(function (success) {
+                                if (user._id.equals(result.tipBy)) {
+                                    findAllTipsForUser(req, res);
+                                }
+                                else if (user.role === 'ADMIN') {
+                                    findAllTips(req, res);
+                                }
+                            },
+                            function (err) {
+                                res.sendStatus(500).send(err);
+                            });
                 }
-            )
+                else {
+                    res.sendStatus(400);
+                }
+            });
+    }
+
+    function findAllTips(req, res) {
+        var user = req.user;
+        if (!'ADMIN' === user.role) {
+            res.sendStatus(400);
+        }
+        else {
+            tipsModel.findAllTips()
+                .then(function (response) {
+                        res.send(response);
+                    },
+                    function (err) {
+                        res.sendStatus(404).send(err);
+                    });
+        }
     }
 }

@@ -30,7 +30,7 @@ define(['angular', 'app', 'jqueryui', 'bootstrap', 'tipsService'], function (ang
             }
 
             function deleteConfirm() {
-                TipsService.deleteTip(vm.tip._id)
+                TipsService.deleteTip(vm.tip._id, vm.tip)
                     .then(function (found) {
                         $("#deleteTipModal").modal('hide');
                         if (found.length == 0) {
@@ -50,7 +50,7 @@ define(['angular', 'app', 'jqueryui', 'bootstrap', 'tipsService'], function (ang
             }
 
             function editConfirm(tipContent) {
-                TipsService.updateTip(vm.tip._id, tipContent)
+                TipsService.updateTip(vm.tip._id, {tip: tipContent})
                     .then(function (found) {
                         $("#editTipModal").modal('hide');
                         if (found.length == 0) {
