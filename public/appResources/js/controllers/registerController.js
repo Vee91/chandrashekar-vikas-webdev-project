@@ -8,8 +8,7 @@ define(['app', 'registerService'], function (app) {
                 {name: 'TRAINEE'},
                 {name: 'COACH'}
             ];
-
-            vm.role = roles[0];
+            vm.role = vm.roles[0];
             function register(user) {
                 if (!user.summonerName || user.summonerName == undefined || user.summonerName === "") {
                     vm.error = "Please enter Summoner Name";
@@ -25,7 +24,6 @@ define(['app', 'registerService'], function (app) {
                 }
                 else {
                     user.role = vm.role.name;
-                    //user.subscribedTo = [];
                     RegisterService.findSummonerByName(user.summonerName)
                         .then(function (found) {
                             if (found.status && found.status.status_code === 404) {

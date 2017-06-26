@@ -32,7 +32,6 @@ define(['angular', 'app', 'jqueryui', 'bootstrap', 'registerService'], function 
                             else {
                                 vm.noUsersfound = false;
                                 vm.users = found;
-                                console.log(found);
                             }
                         }
                     });
