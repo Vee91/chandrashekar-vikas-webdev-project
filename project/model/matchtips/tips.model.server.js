@@ -11,7 +11,8 @@ module.exports = function () {
         findAllTipsForUser: findAllTipsForUser,
         deleteTip: deleteTip,
         updateTipContent: updateTipContent,
-        findAllTips: findAllTips
+        findAllTips: findAllTips,
+        findSubscribedTips: findSubscribedTips
     };
     return factory;
 
@@ -77,5 +78,11 @@ module.exports = function () {
 
     function findAllTips() {
         return tipsModel.find();
+    }
+
+    function findSubscribedTips(subscribedTo) {
+        return tipsModel.find({
+            tipBy: {$in: [subscribedTo]}
+        });
     }
 }

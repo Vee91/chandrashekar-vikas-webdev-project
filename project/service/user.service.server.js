@@ -42,6 +42,7 @@ module.exports = function (model) {
     app.put('/api/user/:userId', updateUser);
     app.post('/api/user/subscribe/:userId', subscribeToUser);
     app.post('/api/user/unsubscribe/:userId', unsubscribeToUser);
+    app.post('/api/logout', logout);
 
     function findSummonerByName(req, res) {
         var summonerName = req.params.sName;
@@ -227,6 +228,11 @@ module.exports = function (model) {
 
     function loggedin(req, res) {
         res.send(req.isAuthenticated() ? req.user : '0');
+    }
+
+    function logout(req, res) {
+        req.logOut();
+        res.send(200);
     }
 
 }

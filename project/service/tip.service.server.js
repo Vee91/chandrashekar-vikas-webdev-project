@@ -17,6 +17,7 @@ module.exports = function (model) {
     app.delete('/api/tip/:tipId', deleteTip);
     app.put('/api/tip/:tipId', updateTipContent);
     app.get('/api/tip/all', findAllTips);
+    app.get('/api/subscribed/tips/', findSubscribedTips);
 
     function addTip(req, res) {
         var tip = req.body;
@@ -195,6 +196,22 @@ module.exports = function (model) {
         }
         else {
             tipsModel.findAllTips()
+                .then(function (response) {
+                        res.send(response);
+                    },
+                    function (err) {
+                        res.sendStatus(404).send(err);
+                    });
+        }
+    }
+
+    function findSubscribedTips(req, res) {
+        var user = req.user;
+        if (user.subscribedTo == undefined || user.subscribedTo.length == 0) {
+            res.sendStatus(400);
+        }
+        else {
+            tipsModel.findSubscribedTips(user.subscribedTo)
                 .then(function (response) {
                         res.send(response);
                     },

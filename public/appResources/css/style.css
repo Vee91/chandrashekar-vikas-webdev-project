@@ -266,6 +266,17 @@ a:hover, a:active {
     cursor: pointer;
 }
 
+.header-logout{
+    text-decoration-line: none;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+    text-transform: uppercase;
+    color: #761c19;
+    white-space: nowrap;
+    font-size: 0.88887em;
+    cursor: pointer;
+}
+
 .header-links p {
     margin-left: 3px;
 }

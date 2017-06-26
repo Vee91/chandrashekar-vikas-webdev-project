@@ -10,7 +10,9 @@ define(['app'], function (app) {
             findAllTipsForUserId: findAllTipsForUserId,
             deleteTip: deleteTip,
             updateTip: updateTip,
-            findAllTips: findAllTips
+            findAllTips: findAllTips,
+            findSubscribedTips: findSubscribedTips,
+            logout: logout
         };
 
         function searchMatchup(champ1, champ2) {
@@ -101,6 +103,23 @@ define(['app'], function (app) {
                 }, function (err) {
                     return err;
                 });
+        }
+
+        function findSubscribedTips() {
+            var url = "/api/subscribed/tips/";
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                }, function (err) {
+                    return err;
+                });
+        }
+        
+        function logout() {
+            return $http.post("/api/logout")
+                .then(function (success) {
+                    return success;
+                })
         }
 
         return factory;
