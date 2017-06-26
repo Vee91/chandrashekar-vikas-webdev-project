@@ -5,6 +5,14 @@ body {
 
 .body-main {
     background-color: #F5F5F5;
+    background: -webkit-linear-gradient(#F5F5F5, #afafaf); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#F5F5F5, #afafaf); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#F5F5F5, #afafaf); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#F5F5F5, #afafaf); /* Standard syntax (must be last) */
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .obj-main {
@@ -134,7 +142,7 @@ a:hover, a:active {
 }
 
 .searchbar-vs {
-    text-align: center;
+    text-align: center; !important;
 }
 
 .search-button {
@@ -158,6 +166,31 @@ a:hover, a:active {
     text-align: center;
     width: 129px;
     z-index: 0;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-image: url(https://cdn.leagueoflegends.com/riotbar/prod/1.6.67/images/account/sprites-s2a5147f733.png);
+    background-position-x: 0px;
+    background-position-y: -237px;
+    background-size: initial;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+    color: #b2d9db;
+    float: inherit;
+    height: 41px;
+    line-height: 28px;
+    margin: auto;
+    padding: 6px 0 0 0;
+    position: relative;
+    text-align: center;
+    width: 129px;
+    z-index: 0;
+    cursor: pointer;
 }
 
 .search-color {
@@ -264,6 +297,7 @@ a:hover, a:active {
     white-space: nowrap;
     font-size: 0.66667em;
     cursor: pointer;
+    font-weight: bold;
 }
 
 .header-logout{
@@ -273,6 +307,7 @@ a:hover, a:active {
     text-transform: uppercase;
     color: #761c19;
     white-space: nowrap;
+    font-weight: bold;
     font-size: 0.88887em;
     cursor: pointer;
 }
@@ -284,4 +319,20 @@ a:hover, a:active {
 .seperator:after {
     content: " | ";
     display: inline;
+}
+
+.youtube-widget {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+
+}
+
+.youtube-widget iframe{
+    border: 3px solid #c9aa71;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }

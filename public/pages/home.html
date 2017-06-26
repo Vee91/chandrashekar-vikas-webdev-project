@@ -25,17 +25,28 @@
 </div>
 
 <div class=" searchbar">
-    <div class="col-xs-4 col-xs-offset-1">
-        <select class="form-control" ng-required="true"
-                ng-model="model.champ1"
-                ng-options="champ.name for champ in model.champions">
-        </select>
+    <div class="row">
+        <div class="col-xs-4 col-xs-offset-1 searchbar-vs">
+            <label for="yourchamp"> Your Champion </label>
+        </div>
+        <div class="col-xs-2 searchbar-vs"></div>
+        <div class="col-xs-4 searchbar-vs">
+            <label for="enemychamp"> Enemy Champion</label>
+        </div>
     </div>
-    <div class="col-xs-2 searchbar-vs">Vs</div>
-    <div class="col-xs-4">
-        <select class="form-control" ng-required="true" ng-model="model.champ2"
-                ng-options="champ.name for champ in model.champions">
-        </select>
+    <div class="row">
+        <div class="col-xs-4 col-xs-offset-1">
+            <select id="yourchamp" class="form-control" ng-required="true"
+                    ng-model="model.champ1"
+                    ng-options="champ.name for champ in model.champions">
+            </select>
+        </div>
+        <div class="col-xs-2 searchbar-vs">Vs</div>
+        <div class="col-xs-4">
+            <select id="enemychamp" class="form-control" ng-required="true" ng-model="model.champ2"
+                    ng-options="champ.name for champ in model.champions">
+            </select>
+        </div>
     </div>
 </div>
 
@@ -48,8 +59,24 @@
         </div>
 
         <div>
-            <h4 class="obj-main">League Tips provides insights on champion match ups to millions of league of legends players worldwide</h4>
+            <h4 class="obj-main">League Tips provides insights on champion match ups to millions of league of legends
+                players worldwide</h4>
         </div>
     </div>
+
+    <div class="col-xs-6 col-xs-offset-3">
+        <div class="row youtube-widget">
+            <iframe src="https://www.youtube.com/embed/-157HBpPZ24" frameborder="0"
+                    allowfullscreen></iframe>
+        </div>
+
+        <div class="row col-xs-6 col-xs-offset-3 header-links searchbar-vs">
+            <a class="seperator">About</a>
+            <a class="seperator">Disclaimer</a>
+            <a> Help</a>
+        </div>
+
+    </div>
+
 
 </div>
