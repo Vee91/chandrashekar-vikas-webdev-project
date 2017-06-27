@@ -74,6 +74,12 @@ define([], function () {
                 cntrl: 'manageUsersCntrl',
                 cntrlAs: 'model',
                 res: 'checklog'
+            },
+            "/ph/disclaimer": {
+                templateUrl: 'pages/disclaimer.html',
+                dependencies: ['disclaimerController'],
+                cntrl: 'disclaimerCntrl',
+                cntrlAs: 'model'
             }
         }
     };
