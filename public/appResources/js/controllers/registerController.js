@@ -6,8 +6,7 @@ define(['app', 'registerService'], function (app) {
             vm.register = register;
             vm.roles = [
                 {name: 'TRAINEE'},
-                {name: 'COACH'},
-                {name: 'ADMIN'}
+                {name: 'COACH'}
             ];
             vm.role = vm.roles[0];
             function register(user) {
