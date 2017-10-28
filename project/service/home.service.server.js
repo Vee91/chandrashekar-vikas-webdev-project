@@ -20,7 +20,7 @@ module.exports = function (model) {
 
 
     function findChampionsQuery() {
-        var reqUrl = "https://na1.api.riotgames.com/lol/static-data/v3/champions?locale=en_US&dataById=false&api_key=RGAPI-09f90e04-e9da-4bf1-8375-36ffe2d23bdc";
+        var reqUrl = "https://na1.api.riotgames.com/lol/static-data/v3/champions?locale=en_US&dataById=false&api_key=RGAPI-32bdc2ff-1496-45eb-a113-bd6f107350a1";
         var parsedUrl = url.parse(reqUrl);
 
         var deferred = q.defer();
@@ -58,7 +58,7 @@ module.exports = function (model) {
     }
 
     function getChampionQuery(champId) {
-        var reqUrl = "https://na1.api.riotgames.com/lol/static-data/v3/champions/"+champId+"?locale=en_US&tags=image&api_key=RGAPI-09f90e04-e9da-4bf1-8375-36ffe2d23bdc";
+        var reqUrl = "https://na1.api.riotgames.com/lol/static-data/v3/champions/"+champId+"?locale=en_US&tags=image&api_key=RGAPI-32bdc2ff-1496-45eb-a113-bd6f107350a1";
         var parsedUrl = url.parse(reqUrl);
 
         var deferred = q.defer();
