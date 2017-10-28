@@ -55,7 +55,7 @@ module.exports = function (model) {
     }
 
     function findSummonerByNameQuery(summonerName) {
-        var reqUrl = "https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/" + summonerName + "?api_key=RGAPI-09f90e04-e9da-4bf1-8375-36ffe2d23bdc";
+        var reqUrl = "https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/" + summonerName + "?api_key=RGAPI-32bdc2ff-1496-45eb-a113-bd6f107350a1";
         var parsedUrl = url.parse(reqUrl);
         var deferred = q.defer();
         https.get({
